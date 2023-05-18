@@ -11,35 +11,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
+    <header class="nav-container">
+        <nav class="nav-main">
             <h1>DS CEP</h1>
-            <div>Contato</div>
+            <div class="contact-link">Contato</div>
         </nav>
     </header>
     <main>
-        <section id="form-section">
-            <div>
+        <section id="form-section" class="form-container">
+            <div class="card-form">
                 <form name="newAddress">
-                    <div>
+                    <div class="form-control">
                         <label for="cep">CEP:</label>
-                        <input name="cep" id="cep" type="text" placeholder="CEP">
+                        <input name="cep" id="cep" class="form-input" type="text" placeholder="CEP">
                     </div>
-                    <div>
+                    <div class="form-control">
                         <label for="rua">Rua:</label>
-                        <input name="rua" id="rua" type="text" placeholder="RUA">
+                        <input name="rua" id="rua" class="form-input" type="text" placeholder="RUA" disabled>
                     </div>
-                    <div>
+                    <div class="form-control">
                         <label for="number">Número:</label>
-                        <input name="number" id="number" type="text" placeholder="Número">
+                        <input name="number" id="number" class="form-input" type="text" placeholder="Número">
                     </div>
-                    <div>
+                    <div class="form-control">
                         <label for="cidade">Cidade:</label>
-                        <input name="cidade" id="cidade" type="text" placeholder="Cidade">
+                        <input name="cidade" id="cidade" class="form-input" type="text" placeholder="Cidade" disabled>
                     </div>
-                    <div>
-                        <button type="submit">Salvar</button>
-                        <button>Limpar</button>
+                    <div class="btn-container">
+                        <button class="btn btn-left" type="submit">Salvar</button>
+                        <button class="btn btn-right">Limpar</button>
                     </div>
 
 
