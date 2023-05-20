@@ -1,5 +1,5 @@
 import Address from "../models/address.js";
-import * as requestService from '../services/request-service.js'
+import * as addressService from '../services/address-service.js'
 
 
     function State () {
@@ -12,6 +12,7 @@ import * as requestService from '../services/request-service.js'
         this.inputRua = null;
         this.inputNumber = null;
         this.inputCidade = null;
+        
     }
 
     const state = new State();
@@ -24,16 +25,45 @@ import * as requestService from '../services/request-service.js'
 
         state.BtnSave = document.forms.newAddress.BtnSave;
         state.BtnClear = document.forms.newAddress.BtnClear;
+        state.inputNumber.addEventListener('change', handleInputNumberChange);
         state.BtnClear.addEventListener('click', handleBtnClearClick) ;
         state.BtnSave.addEventListener('click', handleBtnSaveClick) ;
-
-        console.log(state);
+        state.inputCep.addEventListener('change', handleInputCepChange);
+        
     }
+
+    async function handleInputCepChange(event) {
+        const cep = event.target.value;
+
+        try{
+        const address = await addressService.findByCep(cep);
+
+        state.inputRua.value = address.rua;
+        state.inputCidade.value = address.cidade;
+        state.address = address;
+        state.inputNumber.focus();
+
+        console.log(address);
+    }
+    catch(e) {
+
+    }
+    }
+
+    function handleInputNumberChange(event) {
+        if (event.target.value == "") {
+            setFormError("number", "Campo requerido");
+        }
+        else {
+            setFormError("number", "");
+        }
+    }
+
+
 
     async function handleBtnSaveClick(event) {
         event.preventDefault();
-        const result = await requestService.getJson('https://viacep.com.br/ws/01001000/json/');
-        console.log(result);
+        console.log(event.target);
 
     }
     function handleBtnClearClick(event) {
