@@ -26,10 +26,15 @@ import * as addressService from '../services/address-service.js'
         state.BtnSave = document.forms.newAddress.BtnSave;
         state.BtnClear = document.forms.newAddress.BtnClear;
         state.inputNumber.addEventListener('change', handleInputNumberChange);
+        state.inputNumber.addEventListener('keyup', handleInputNumberKeyup);
         state.BtnClear.addEventListener('click', handleBtnClearClick) ;
         state.BtnSave.addEventListener('click', handleBtnSaveClick) ;
         state.inputCep.addEventListener('change', handleInputCepChange);
         
+    }
+
+    function handleInputNumberKeyup(event) {
+        state.address.number = event.target.value;
     }
 
     async function handleInputCepChange(event) {
@@ -52,10 +57,10 @@ import * as addressService from '../services/address-service.js'
 
     function handleInputNumberChange(event) {
         if (event.target.value == "") {
-            setFormError("number", "Campo requerido");
+           
         }
         else {
-            setFormError("number", "");
+            
         }
     }
 
